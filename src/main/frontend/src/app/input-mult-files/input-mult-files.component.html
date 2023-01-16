@@ -1,0 +1,36 @@
+<div class="input-mult-files-container">
+  <div *ngIf="loading == false">
+    <h2>Selecione um ou mais arquivos XML para a mineração de dados.</h2>
+    <input
+      #xmlInput
+      type="file"
+      hidden="true"
+      onclick="this.value=null"
+      (change)="onXmlInputChangeHandler($event)"
+      accept=".xml"
+      multiple="multiple"
+    />
+    <div class="file-list-container" *ngIf="files.length > 0">
+      <mat-list role="list" #FilesToUpload>
+        <mat-list-item role="listitem" *ngFor="let file of files; index as idx">
+          <span matListItemLine class="file-name">{{file.name}}</span>
+          <button mat-icon-button matListItemMeta color="warn" class="delete-button" (click)="onRemoveFileClickHandler(idx)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="buttons-container">
+      <button mat-stroked-button color="primary" (click)="xmlInput.click()">
+        Adicionar Arquivos
+      </button>
+      <button mat-raised-button color="primary" [hidden]="files.length === 0" (click)="onSendClickHandler()">
+        Enviar Arquivos
+      </button>
+    </div>
+  </div>
+  <div *ngIf="loading">
+    <h2>Aguarde enquanto os arquivos estão sendo processados.</h2>
+    <mat-spinner/>
+  </div>
+</div>

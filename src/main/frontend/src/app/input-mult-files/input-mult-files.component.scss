@@ -1,0 +1,25 @@
+.input-mult-files-container {
+  display: flex;
+  flex-direction: column;
+
+  .input-container {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+
+    button {
+      width: fit-content;
+      padding: 15px;
+    }
+  }
+
+  mat-spinner {
+    margin: auto;
+  }
+}
